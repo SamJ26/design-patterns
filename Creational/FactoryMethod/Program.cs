@@ -35,7 +35,7 @@ public abstract class DialogComponent
     public void Render()
     {
         // This call invokes overridden method in derived class
-        var button = CreateButton();
+        IButton button = CreateButton();
         button.Render();
     }
 }
