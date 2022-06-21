@@ -1,3 +1,5 @@
+# Factory method design pattern
+
 ## Applicability
 
 - Use the Factory Method when you don’t know beforehand the exact types and dependencies of the objects your code should work with.
