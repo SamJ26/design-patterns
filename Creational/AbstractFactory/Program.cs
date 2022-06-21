@@ -12,12 +12,10 @@ public class Application
         this.guiFactory = guiFactory;
     }
 
-    public Application CreateGui()
+    public void CreateGui()
     {
         Button = guiFactory.CreateButton();
         Checkbox = guiFactory.CreateCheckbox();
-
-        return this;
     }
 
     public void Render()
@@ -34,7 +32,11 @@ public class Program
         var guiFactory = GetFactory(args);
         var app = new Application(guiFactory);
 
-        app.CreateGui().Render();
+        app.CreateGui();
+        app.Render();
+
+        app.Button.Click();
+        app.Checkbox.SetValue(true);
     }
 
     static IGuiFactory GetFactory(string[] args)
