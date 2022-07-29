@@ -1,15 +1,15 @@
 ﻿namespace FactoryMethod;
 
-public class Application
+public class DialogWindow
 {
-    public DialogComponent Dialog { get; }
+    public IButton Button { get; }
     
-    public Application(string[] args)
+    public DialogWindow(string[] args)
     {
-        Dialog = args[0] switch
+        Button = args[0] switch
         {
-            "Web" => new WebDialogComponent(),
-            "Desktop" => new DesktopDialogComponent(),
+            "web" => new WebButtonFactory().CreateButton(),
+            "desktop" => new DesktopButtonFactory().CreateButton(),
             _ => throw new Exception("Unknown environment")
         };
     }
@@ -19,7 +19,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var app = new Application(args);
-        app.Dialog.Render();
+        new DialogWindow(args).Button.Click();
     }
 }
